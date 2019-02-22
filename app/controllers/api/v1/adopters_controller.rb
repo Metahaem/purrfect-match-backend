@@ -15,7 +15,7 @@ class Api::V1::AdoptersController < ApplicationController
     
     
       def create
-        @adopter = Adopter.new(name: params[:name])
+        @adopter = Adopter.new(adopter_params)
         if @adopter.valid? && @adopter.save
             render json: { adopter: AdopterSerializer.new(@adopter) }, status: :created        
         else
@@ -44,7 +44,7 @@ class Api::V1::AdoptersController < ApplicationController
       private
     
         def adopter_params
-          params.require(:adopter).permit(:name, :id, :password)
+          params.permit(:name, :password, :location)
         end
     
         def find_adopter

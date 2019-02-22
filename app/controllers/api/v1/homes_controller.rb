@@ -15,7 +15,7 @@ class Api::V1::HomesController < ApplicationController
       end
     
       def create
-        @home = Home.new(name: params[:name])
+        @home = Home.new(home_params)
         if @home.valid? && @home.save
             render json: { home: HomeSerializer.new(@home) }, status: :created        
         else
@@ -40,7 +40,7 @@ class Api::V1::HomesController < ApplicationController
       private
     
         def home_params
-          params.require(:home).permit(:name, :id, :password)
+          params.permit(:name, :password)
         end
     
         def find_home
