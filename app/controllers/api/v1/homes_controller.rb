@@ -28,10 +28,6 @@ class Api::V1::HomesController < ApplicationController
         redirect_to homes_path
       end
 
-      def stories
-        render json: @home.stories
-      end
-
       def signin
         @home = Home.find_by(name: params[:name])
         if @home && @home.authenticate(params[:password])
@@ -44,7 +40,7 @@ class Api::V1::HomesController < ApplicationController
       private
     
         def home_params
-          params.permit(:name, :id)
+          params.require(:home).permit(:name, :id, :password)
         end
     
         def find_home

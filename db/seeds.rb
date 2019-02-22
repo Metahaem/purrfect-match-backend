@@ -6,5 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Home.create!(name: "Blue Cross", password_digest: "blue", user: false)
-Adopter.create!(name: "Tom Rowson", password_digest: "tomspassword", location: "E2 0SU", admin: true)
+Home.create!(name: "Blue Cross", password: "blue", user: false)
+Adopter.create!(name: "Tom Rowson", password: "tomspassword", location: "E2 0SU", admin: true)

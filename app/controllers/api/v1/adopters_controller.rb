@@ -44,7 +44,7 @@ class Api::V1::AdoptersController < ApplicationController
       private
     
         def adopter_params
-          params.permit(:name, :id)
+          params.require(:adopter).permit(:name, :id, :password)
         end
     
         def find_adopter

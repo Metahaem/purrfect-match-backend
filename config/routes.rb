@@ -4,7 +4,9 @@ Rails.application.routes.draw do
       resources :homes
       resources :pets
       resources :likes
-      resources :adopters
+      resources :adopters, only: [:create]
+      post '/login', to: 'auth#create'
+      get '/profile', to: 'users#profile'
       resources :user_stories
     end
   end
