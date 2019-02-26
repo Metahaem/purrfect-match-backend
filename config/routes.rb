@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :pets
       resources :likes
       resources :adopters
+      post '/likes/create', to: 'likes#create'
       post '/homes/login', to: 'auth#create'
       post '/adopters/login', to: 'auth#create'
       get '/adopters/profile', to: 'adopters#profile'
