@@ -1,6 +1,11 @@
 class Api::V1::UsersController < ApplicationController
     skip_before_action :authorized, only: [:create]
    
+    def index
+        @users = User.all
+        render json: @users
+    end
+
     def profile
       render json: { user: UserSerializer.new(current_user) }, status: :accepted
     end
@@ -13,6 +18,15 @@ class Api::V1::UsersController < ApplicationController
       else
         render json: { error: 'failed to create user' }, status: :not_acceptable
       end
+    end
+
+    def login
+        @user = User.find_by(username: params[:username])
+        if @user && @user.authenticate(params[:password])
+            render json: @user
+        else
+            render json: {error: "Username/password invalid"}, status: 400
+        end
     end
    
     private

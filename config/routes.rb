@@ -7,7 +7,8 @@ Rails.application.routes.draw do
       resources :adopters
       post '/likes/create', to: 'likes#create'
       post '/users/login', to: 'auth#create'
-      get '/users/profile', to: 'adopters#profile'      
+      get '/users/profile', to: 'adopters#profile'     
+      post 'user_token' => 'user_token#create' 
     end
   end
   
