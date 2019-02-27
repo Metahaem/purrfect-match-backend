@@ -4,7 +4,7 @@ require 'open-uri'
 class BlueCross < ApplicationRecord
     
     def self.get_home_id
-        Home.all.find{|home| home.name == "Blue Cross"}.id
+        Home.all.find{|home| home.user.username == "Blue Cross"}.id
     end
     
     def self.get_page(animal_type)
