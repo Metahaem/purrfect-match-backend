@@ -28,19 +28,10 @@ class Api::V1::HomesController < ApplicationController
         redirect_to homes_path
       end
 
-      def signin
-        @home = Home.find_by(name: params[:name])
-        if @home && @home.authenticate(params[:password])
-          render json: {home: @home.name, id: @home.id}
-        else
-          render json: {error: 'Username/password invalid.'}, status: 400
-        end
-      end
-    
       private
     
         def home_params
-          params.permit(:name, :password)
+          params.permit(:user_id)
         end
     
         def find_home

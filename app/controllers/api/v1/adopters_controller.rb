@@ -32,19 +32,11 @@ class Api::V1::AdoptersController < ApplicationController
         render json: @adopter.stories
       end
 
-      def signin
-        @adopter = Adopter.find_by(name: params[:name])
-        if @adopter && @adopter.authenticate(params[:password])
-          render json: {adopter: @adopter.name, id: @adopter.id}
-        else
-          render json: {error: 'Username/password invalid.'}, status: 400
-        end
-      end
     
       private
     
         def adopter_params
-          params.permit(:name, :password, :location)
+          params.permit(:user_id)
         end
     
         def find_adopter
