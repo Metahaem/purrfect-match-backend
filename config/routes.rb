@@ -6,11 +6,8 @@ Rails.application.routes.draw do
       resources :likes
       resources :adopters
       post '/likes/create', to: 'likes#create'
-      post '/homes/login', to: 'auth#create'
-      post '/adopters/login', to: 'auth#create'
-      get '/adopters/profile', to: 'adopters#profile'
-      get '/homes/profile', to: 'homes#profile'
-      
+      post '/users/login', to: 'auth#create'
+      get '/users/profile', to: 'adopters#profile'      
     end
   end
   

@@ -13,7 +13,6 @@ class Api::V1::PetsController < ApplicationController
         @pet = pet.new
       end
     
-    
       def create
         @pet = Pet.new(name: params[:name])
         if @pet.valid? && @pet.save

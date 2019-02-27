@@ -10,24 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_21_111131) do
+ActiveRecord::Schema.define(version: 2019_02_27_114016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "adopters", force: :cascade do |t|
-    t.string "name"
-    t.string "password_digest"
+    t.integer "user_id"
     t.string "location"
-    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "homes", force: :cascade do |t|
-    t.string "name"
-    t.string "password_digest"
-    t.boolean "user", default: true
+    t.integer "user_id"
+    t.boolean "external", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,6 +50,14 @@ ActiveRecord::Schema.define(version: 2019_02_21_111131) do
     t.boolean "live_with_kids", default: false
     t.string "colour"
     t.integer "home_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

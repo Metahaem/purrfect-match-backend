@@ -1,5 +1,5 @@
 class Home < ApplicationRecord
+    belongs_to :user
     has_many :pets
-    has_secure_password
-    validates :name, uniqueness: { case_sensitive: false }
+ 
 end
