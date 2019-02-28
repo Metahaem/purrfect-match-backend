@@ -5,10 +5,12 @@ Rails.application.routes.draw do
       resources :pets
       resources :likes
       resources :adopters
+      resources :users
       post '/likes/create', to: 'likes#create'
       post '/users/login', to: 'users#login'
       get '/users/profile', to: 'adopters#profile'     
       post 'user_token' => 'user_token#create' 
+      get 'validate', to: 'users#validate'
     end
   end
   
