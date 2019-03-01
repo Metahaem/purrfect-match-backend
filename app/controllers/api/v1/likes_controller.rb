@@ -8,12 +8,18 @@ class Api::V1::LikesController < ApplicationController
     
     
     def create
+      #check to see if like already exists
+      if !!(Like.all.find{|like| like.adopter_id == params[:adopter_id] && like.pet_id == params[:pet_id]})
+        render json: "You already like this animal!", status: :not_acceptable
+      else
+
         @like = Like.new(like_params)
         if @like.valid? && @like.save
             render json: { like: LikeSerializer.new(@like) }, status: :created        
         else
           render json: {error: "Unable to create like."}, status: :not_acceptable
         end
+      end
     end
 
 

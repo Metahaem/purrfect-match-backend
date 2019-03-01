@@ -21,6 +21,8 @@ class Api::V1::AdoptersController < ApplicationController
         else
           render json: {error: "Unable to create adopter."}, status: :not_acceptable
         end
+
+
       end
 
       def destroy

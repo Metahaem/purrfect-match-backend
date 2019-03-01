@@ -58,6 +58,21 @@ class Api::V1::UsersController < ApplicationController
             render json: {error: "Not a valid user"}, status: 401
         end
     end
+
+    def get_adopter
+        @user = current_user
+        if @user
+            if @user.adopters.length > 0 
+                render json: @user.adopters.first.id
+            else
+                Adopter.create(user_id: @user.id)
+            end
+        else
+            render json: {error: "Not a valid user"}, status: 401
+        end
+    end
+
+
  
     private
    
