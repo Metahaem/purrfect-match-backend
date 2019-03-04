@@ -12,7 +12,6 @@ class Api::V1::LikesController < ApplicationController
       if !!(Like.all.find{|like| like.adopter_id == params[:adopter_id] && like.pet_id == params[:pet_id]})
         render json: "You already like this animal!", status: :not_acceptable
       else
-
         @like = Like.new(like_params)
         if @like.valid? && @like.save
             render json: { like: LikeSerializer.new(@like) }, status: :created        
@@ -32,7 +31,7 @@ class Api::V1::LikesController < ApplicationController
       private
     
         def like_params
-          params.permit(:adopter_id, :pet_id)
+          params.permit(:adopter_id, :pet_id, )
         end
     
         def find_like

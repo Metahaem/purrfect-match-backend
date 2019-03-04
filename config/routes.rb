@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :users
       post '/likes/create', to: 'likes#create'
       post '/users/login', to: 'users#login'
+      post '/users/signup', to: 'users#create'
       get 'likes', to: 'users#get_likes'
       get 'adopter', to: 'users#get_adopter'
       get '/users/profile', to: 'adopters#profile'     
